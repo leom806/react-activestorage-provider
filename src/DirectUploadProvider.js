@@ -65,7 +65,7 @@ class DirectUploadProvider extends React.Component<Props, State> {
       handleChooseFiles: this.handleChooseFiles,
       handleBeginUpload: this.handleBeginUpload,
       handleUpload: this.handleUpload,
-      ready: true,
+      ready: !this.state.uploading,
       uploads: Object.keys(fileUploads).map(key => fileUploads[key]),
     })
   }
@@ -98,10 +98,12 @@ class DirectUploadProvider extends React.Component<Props, State> {
 
   handleChangeFileUpload = (fileUpload: {
     [string]: ActiveStorageFileUpload,
-  }) =>
+  }) => {
     this.setState(({ fileUploads }) => ({
+      uploading: false,
       fileUploads: { ...fileUploads, ...fileUpload },
     }))
+  }
 
   _createUpload(file: File) {
     const {
