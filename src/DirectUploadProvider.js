@@ -65,7 +65,7 @@ class DirectUploadProvider extends React.Component<Props, State> {
       handleChooseFiles: this.handleChooseFiles,
       handleBeginUpload: this.handleBeginUpload,
       handleUpload: this.handleUpload,
-      ready: !this.state.uploading,
+      ready: true,
       uploads: Object.keys(fileUploads).map(key => fileUploads[key]),
     })
   }
